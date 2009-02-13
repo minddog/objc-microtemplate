@@ -1,3 +1,13 @@
 Objective-C Microtemplate
 -------------------------
 Copyright(C) 2009 Adam Ballai <aballai@gmail.com>
+
+Example Usage:
+Initializers
+	NSString *defaultTemplatePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"material_detail.html"];
+	Microtemplate *mtpl = [Microtemplate from_file:defaultTemplatePath];
+	Microtemplate *mtpl = [[Microtemplate alloc] initWithString:@"<!--- BEGIN: test --->$test<!--- END: test --->"];
+
+Rendering:
+	NSDictionary *env = [NSDictionary dictionaryWithObject:@"test" forKey:@"test"];
+	NSString *test = [mtpl render:@"test" env:env];
